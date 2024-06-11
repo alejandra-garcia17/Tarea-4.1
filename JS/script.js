@@ -1295,6 +1295,424 @@ class Ejercicio {
             document.getElementById("resultado").innerHTML = `El costo de envío es: $${costo_envio}`;
         }
     }
+
+    // Ejercicio 33
+    // 35. Calculadora de descuento por lealtad del cliente: Pide al usuario que 
+    // ingrese el total de sus compras mensuales durante un año. Si el total es 
+    // superior a $500, aplica un descuento del 10% en la proxima compra.
+    // Bosquejo
+    // Entrada: totalCompras=0(ingresar), descuento=0(calcular)
+    // Proceso: Si totalCompras > 500 Entonces
+    //              descuento <- totalCompras * 0.10
+
+    //              Escribir "Felicidades, ha calificado para un descuento del 10% en su proxima compra."
+    //              Escribir "El descuento es de: $", + descuento
+    //          Sino
+    //              Escribir "No ha calificado para un descuento en su proxima compra."
+    //          Fin Si
+    // Salida: descuento
+
+    /*Algoritmo CalculadoraDescuentoEJ33
+
+    Definir totalCompras, descuento Como Real
+	
+    Escribir "Ingrese el total de sus compras mensuales durante un año: $"
+    Leer totalCompras
+
+    Si totalCompras > 500 Entonces
+        descuento <- totalCompras * 0.10
+
+        Escribir "Felicidades, ha calificado para un descuento del 10% en su proxima compra."
+        Escribir "El descuento es de: $", + descuento
+    Sino
+        Escribir "No ha calificado para un descuento en su proxima compra."
+    Fin Si
+	
+    FinAlgoritmo*/
+
+    Ejercicio33() {
+    let totalCompras = parseFloat(document.getElementById("totalCompras").value);
+    let descuento
+
+        if(totalCompras > 500){
+           descuento = totalCompras * 0.10
+           document.getElementById("resultado").innerHTML = `Su descuento por lealtad es: $${descuento.toFixed(2)}`;
+        }else{
+           document.getElementById("resultado").innerHTML = "No ha calificado para un descuento en su proxima compra";
+        }
+    }
+
+    // Ejercicio 34
+    // 36. Calculadora de descuento por volumen de compra: Permite al usuario ingresar 
+    // la cantidad de unidades de un producto que va a comprar y el precio unitario.
+    // Aplica descuentos por volumen de compra segun las siguientes reglas:
+    // 10-50 unidades: 5% de descuento
+    // 51-100 unidades: 10% de descuento
+    // Mas de 100 unidades: 15% de descuento
+    // Bosquejo
+    // Entrada: cantidad=0(ingresar), precioUnitario=0(ingresar), descuento=0(calcular), total=0(calcular)
+    // // Proceso: Si cantidad >= 10 Y cantidad <= 50 Entonces
+    //                descuento <- 0.05  // 5% de descuento para 10-50 unidades
+    //             Sino
+    //                  Si cantidad > 50 Y cantidad <= 100 Entonces
+    //                     descuento <- 0.10  // 10% de descuento para 51-100 unidades
+    //                  Sino
+    //                      Si cantidad > 100 Entonces
+    //                      descuento <- 0.15  // 15% de descuento para m�s de 100 unidades
+    //                      Sino
+    //                      descuento <- 0  // No hay descuento si compra menos de 10 unidades
+    //                      Fin Si
+    //                  Fin Si
+    //             Fin Si
+    // Salida: total
+
+    /*Algoritmo CalcularDescuentoPorVolumenEJ34
+
+    Definir cantidad, precioUnitario, descuento, total Como Real
+	
+    Escribir "Ingrese la cantidad de unidades que va a comprar: "
+    Leer cantidad
+	
+    Escribir "Ingrese el precio unitario del producto: $"
+    Leer precioUnitario
+
+    Si cantidad >= 10 Y cantidad <= 50 Entonces
+        descuento <- 0.05  // 5% de descuento para 10-50 unidades
+    Sino
+        Si cantidad > 50 Y cantidad <= 100 Entonces
+            descuento <- 0.10  // 10% de descuento para 51-100 unidades
+        Sino
+            Si cantidad > 100 Entonces
+                descuento <- 0.15  // 15% de descuento para m�s de 100 unidades
+            Sino
+                descuento <- 0  // No hay descuento si compra menos de 10 unidades
+            Fin Si
+        Fin Si
+    Fin Si
+	
+	// SALIDA: 
+    total <- cantidad * precioUnitario * (1 - descuento)
+	
+    Escribir "El total a pagar es: $", + total
+	
+    FinAlgoritmo*/
+
+    Ejercicio34() {
+        let cantidad = parseInt(document.getElementById("cantidad").value);
+        let precioUnitario = parseFloat(document.getElementById("precioUnitario").value);
+        let descuento;
+    
+        if (cantidad >= 10 && cantidad <= 50) {
+            descuento = precioUnitario * 0.05;
+        } else if (cantidad > 50 && cantidad <= 100) {
+            descuento = precioUnitario * 0.10;
+        } else if (cantidad > 100) {
+            descuento = precioUnitario * 0.15;
+        } else {
+            descuento = 0;
+        }
+        let precioTotal = (cantidad * precioUnitario) - descuento;
+        document.getElementById("resultado").innerHTML = `Descuento aplicado: $${descuento.toFixed(2)}<br>El 
+        precio total con descuento es: $${precioTotal.toFixed(2)}`;
+    }
+
+    // Ejercicio 35
+    // 35. Calculadora de costo de servicio: Pregunta al usuario cu�ntas horas de 
+    // servicio necesita y calcula el costo total. Si las horas son m�s de 10, aplica 
+    // un descuento del 20%.
+    // Bosquejo
+    // Entrada: horas=0(ingresar), costoTotal=0(calcular)
+    // // Proceso: Si horas > 10 Entonces
+    //                costoTotal <- horas * 10 * 0.20  // Aplica un descuento del 20% si son m�s de 10 horas
+    //             Sino
+    //                costoTotal <- horas * 10  // El costo es de $10 por hora
+    //             Fin Si
+    // Salida: costoTotal
+
+    /*Algoritmo CalcularCostoServicioEJ35
+
+    Definir horas, costoTotal Como Real
+	
+    Escribir "Ingrese cuantas horas de servicio necesita: "
+    Leer horas
+
+    Si horas > 10 Entonces
+        costoTotal <- horas * 10 * 0.20  // Aplica un descuento del 20% si son m�s de 10 horas
+    Sino
+        costoTotal <- horas * 10  // El costo es de $10 por hora
+    Fin Si
+
+    Escribir "El costo total del servicio es: $", costoTotal
+	
+    FinAlgoritmo*/
+
+    Ejercicio35() {
+        let horasServicio = parseInt(document.getElementById("horasServicio").value);
+        let costoHora = 10; // Precio por hora
+        let costoTotal;
+    
+        if (horasServicio > 10) {
+            costoTotal = horasServicio * costoHora;
+            let descuento = costoTotal * 0.20;
+            costoTotal = costoTotal - descuento; 
+        } else {
+            costoTotal = horasServicio * costoHora;
+        }
+    
+        document.getElementById("resultado").innerHTML = `El costo total del servicio es: $${costoTotal.toFixed(2)}`;
+    }
+
+    // Ejercicio 36
+    // 36. Suma de numeros pares: Utiliza un bucle for para calcular la suma de los 
+    // nmeros pares del 1 al 50.
+    // Bosquejo
+    // Entrada: suma=0(calcular), num=0(ingresar)
+    // Proceso: Para num <- 1 Hasta 50 Con Paso 1 Hacer
+    //               Si num MOD 2 = 0 Entonces
+    //               suma <- suma + num
+    //               FinSi
+    //          FinPara
+    // Salida: suma
+
+    /*Algoritmo Numeros_paresEJ36
+
+	Definir suma, num Como Entero
+
+    suma = 0
+	
+    Para num = 1 Hasta 50 Con Paso 1 Hacer
+        Si num MOD 2 = 0 Entonces
+            suma = suma + num
+        FinSi
+    FinPara
+
+    Escribir "La suma de los numeros pares del 1 al 50 es:", suma
+	
+    FinAlgoritmo*/
+
+    Ejercicio36() {
+        let num = parseInt(document.getElementById("sumaPare").value);
+        let sumaPares = 0;
+
+            for (let i = 1; i <= num; i++) {
+                if (i % 2 === 0) {
+                    sumaPares += i;
+                }
+            }
+            document.getElementById("resultado").innerHTML = `La suma de los números pares del 1 al ${num} es: ${sumaPares}`;
+    }
+
+    // Ejercicio 37
+    // 37. Tabla de multiplicar: Utiliza un bucle for para imprimir la tabla de 
+    // multiplicar de un numero ingresado por el usuario del 1 al 12
+    // Entrada: num=0(ingresar), resul=0(calcular), mul=0(calcular)
+    // Proceso: Para mul <- 1 Hasta 12 Con Paso 1 Hacer
+    //                  resul <- num * mul
+    //                  Escribir num, " x ", mul, " = ", resul
+    //             FinPara
+    // Salida: result
+
+    /*Algoritmo Tabla_multiplicarEJ37
+	
+	Definir num, resul, mul Como Entero
+	
+    Escribir "Ingresa un numero para ver su tabla de multiplicar:"
+    Leer num
+	
+    Para mul <- 1 Hasta 12 Con Paso 1 Hacer
+        resul <- num * mul
+        Escribir num, " x ", mul, " = ", resul
+    FinPara
+	
+    FinAlgoritmo*/
+
+    Ejercicio37() {
+        let num = parseInt(document.getElementById('num').value);
+        let resultado = '';
+        let mul, resul
+
+            for (mul = 1; mul <= 12; mul++) {
+                resul = num * mul;
+                resultado += num + ' x ' + mul + ' = ' + resul + '<br>';
+            }
+            document.getElementById('resultado').innerHTML = resultado;
+    }
+
+    // Ejercicio 38
+    // 38. Contador de vocales: Utiliza un bucle while para contar el numero de 
+    // vocales en una palabra ingresada por el usuario.
+    // Bosquejo
+    // Entrada: palabra=""(ingresar), long=0(calcular), x=1, vocal=0
+    // Proceso: Mientras x <= long Hacer
+    // 		     Segun Subcadena(palabra,x,x) Hacer
+    //             "a" O "A", "e" O "E", "i" O "I", "o" O "O", "u" O "U":
+    //              vocal = vocal + 1
+    //           FinSegun
+    //             x = x + 1
+    //          FinMientras
+    // Salida: vocal
+
+    /*Algoritmo contar_vocalesEJ39
+	
+	Definir palabra Como Caracter
+	Definir long,x,vocal Como Entero
+	
+	Escribir "Ingresa una frase"
+	Leer palabra
+	
+	long = Longitud(palabra)
+	x = 1
+	vocal = 0
+	
+	Mientras x <= long Hacer
+		Segun Subcadena(palabra,x,x) Hacer
+				"a" O "A", "e" O "E", "i" O "I", "o" O "O", "u" O "U":
+				vocal = vocal + 1
+		FinSegun
+		x = x + 1
+	FinMientras
+	
+	Escribir "La frase " , palabra, " tiene ", vocal, " vocales"
+	
+    FinAlgoritmo*/
+
+    Ejercicio38() {
+        let pos = 0, cv = 0, frase,resp
+        frase = document.getElementById("frase").value
+        frase = frase.toLowerCase()
+
+        while (pos < frase.length){
+            if (frase[pos] == 'a' || frase[pos] == 'e' || frase[pos] == 'i' || frase[pos] == 'o' || frase[pos] == 'u'){
+                cv=cv +1 
+            }
+            pos++
+        }
+        resp = document.getElementById("resultado")
+        resp.innerHTML = `cantidad vocales: ${cv}`
+    }
+
+    // Ejercicio 39
+    // 39. Contador de digitos: Utiliza un bucle for para contar el numero de d�gitos 
+    // en una palabra ingresada por el usuario.
+    // Bosquejo
+    // Entrada: palabra="", long=, contador=, i=0, x=1
+    // Proceso: Para i <- 1 Hasta long Hacer
+    //             caracter <- SubCadena(palabra, i, x)	
+    //            Si caracter >= "0" Y caracter <= "9" Entonces
+    //                contador <- contador + 1
+    //            FinSi
+	//          	x = x + 1 
+    //          FinPara
+    // Salida: contador
+
+    /*Algoritmo Contar_NumerosEJ40
+	
+    Definir palabra Como Cadena
+    Definir long, contador, i, x Como Entero
+    Definir caracter Como Caracter
+	
+    contador <- 0
+	x = 1
+	
+    Escribir "Ingresa una palabra: "
+    Leer palabra
+	
+    long <- Longitud(palabra)
+	
+    Para i <- 1 Hasta long Hacer
+        caracter <- SubCadena(palabra, i, x)
+		
+        Si caracter >= "0" Y caracter <= "9" Entonces
+            contador <- contador + 1
+        FinSi
+		x = x + 1 
+    FinPara
+	
+    Escribir "La palabra ", palabra, " tiene ", contador, " numeros"
+
+    FinAlgoritmo*/
+
+    Ejercicio39() {
+        let palabraIngresada = document.getElementById("palabra").value;
+        let contadorDigitos = 0;       
+           
+            for (let i = 0; i < palabraIngresada.length; i++) {
+                let caracter = palabraIngresada.charAt(i);
+
+                if (parseInt(caracter)) {
+                    contadorDigitos++;
+                }
+            }
+            document.getElementById("resultado").innerHTML = `La palabra "${palabraIngresada}" tiene ${contadorDigitos} dígitos.`;
+    }
+
+    // Ejercicio 40
+    // 40. Adivina el numero: Genera un numero aleatorio y pide al usuario que 
+    // adivine el numero. Utiliza un bucle while para repetir la solicitud hasta que
+    // adivine correctamente.
+    // Bosquejo
+    // Entrada: umSecreto=0, intento=0, num=0, acertado=0
+    // Proceso:
+    // Salida:
+
+    /*Algoritmo Adivina_numeroEJ41
+    Definir numSecreto, intento, num, acertado Como Entero
+
+    numSecreto <- Aleatorio(1, 100)
+
+    Escribir "¡Bienvenido al juego Adivina el Numero!"
+    
+    intento <- 0  // Inicializa el contador de intentos
+	acertado <- 0 
+    
+    Mientras acertado = 0 Hacer
+        Escribir "Ingresa tu intento: "
+        Leer num
+        
+        intento <- intento + 1  // Incrementa el contador de intentos
+        
+        Si num = numSecreto Entonces
+            Escribir "¡Felicidades! Adivinaste el numero en ", intento, " intentos."
+			acertado <- 1
+        Sino 
+            Si num < numSecreto Entonces
+				Escribir "El numero secreto es mayor. Sigue intentando."
+			Sino
+				Escribir "El numero secreto es menor. Sigue intentando."
+			FinSi
+		FinSi
+	FinMientras
+		
+    FinAlgoritmo*/
+
+    // Inicialización de variables
+
+    Ejercicio40() {
+        let numSecreto = Math.floor(Math.random() * 50) + 1;
+        let intento = 0;
+        let acertado = false;
+        let num = parseInt(document.getElementById("num").value);
+        intento++; 
+
+        if (num === numSecreto) {
+        document.getElementById("resultado").textContent = `¡Felicidades! Adivinaste el número en ${intento} intentos.`;
+        acertado = true;
+        } else if (num < numSecreto) {
+        document.getElementById("resultado").textContent = "El número secreto es mayor. Sigue intentando.";
+        } else {
+        document.getElementById("resultado").textContent = "El número secreto es menor. Sigue intentando.";
+        }
+    document.getElementById("num").value = '';
+
+    if (acertado) {
+        document.querySelector("button").disabled = true;
+    }
+}
+
+
+
+
+
 }
 
 
