@@ -2170,10 +2170,375 @@ FinAlgoritmo*/
         
         document.getElementById('resultado').textContent = `La cantidad de números pares en el arreglo es: ${evenCount}`;
     }
-    
 
+    // Ejercicio 51
+    // 51. Inversion de un arreglo: Invierte el orden de los elementos en un arreglo. 
+    // Por ejemplo, [1, 2, 3] se convierte en [3, 2, 1].
+
+    /*Algoritmo InversionEJ51
+    Dimension num[10] 
+    Definir i, temp, num Como Entero
+
+    num[1] <- 12
+    num[2] <- 25
+    num[3] <- 5
+    num[4] <- 73
+    num[5] <- 27
+    num[6] <- 14
+    num[7] <- 7
+    num[8] <- 85
+    num[9] <- 9
+	
+    Escribir "Arreglo original:"
+    Para i <- 1 Hasta 9 Hacer
+        Escribir num[i]
+    FinPara
+	
+    // Invertimos el orden de los elementos en el arreglo
+    Para i <- 1 Hasta 10 / 2 Hacer
+        temp <- num[i]
+        num[i] <- num[9 - i]
+        num[9 - i] <- temp
+    FinPara
+	
+    Escribir "Arreglo invertido:"
+    Para i <- 1 Hasta 9 Hacer
+        Escribir num[i]
+    FinPara
+FinAlgoritmo*/
+
+    Ejercicio51() {
+        let num = document.getElementById('num').value.split(',').map(Number);
     
+        let reversedNum = num.reverse();
     
+        document.getElementById('resultado').textContent = `El arreglo invertido es: [${reversedNum.join(', ')}]`;
+    }
+
+    // Ejercicio 52
+    // 52. Buscar el 1ndice: Pide al usuario que ingrese un valor y encuentra el 
+    // indice de ese valor en un arreglo. Si el valor aparece mas de una vez, 
+    // muestra todos los 1ndices.
+
+    /*Algoritmo Buscar_indiceEJ52
+
+    Dimension num[10] 
+    Definir buscar, num, i, indices Como Entero
+    Definir encontrado Como Logico
+	
+    num[1] <- 5
+    num[2] <- 14
+    num[3] <- 123
+    num[4] <- 14
+    num[5] <- 28
+    num[6] <- 37
+    num[7] <- 14
+    num[8] <- 24
+    num[9] <- 45
+   
+    encontrado <- Falso  
+    indices <- 1  
+	
+    Escribir "Ingresa un valor para buscar en el arreglo:"
+    Leer valorBuscado
+	
+    Escribir "indices donde se encontra el valor ", buscar, ":"
+    Para i <- 1 Hasta 9 Hacer
+        Si num[i] = buscar Entonces
+            Escribir i
+            encontrado <- Verdadero
+        FinSi
+    FinPara
+	
+    Si No encontrado Entonces
+        Escribir "El valor ", buscar, " no se encontra en el arreglo."
+    FinSi
+
+    FinAlgoritmo*/
+
+    Ejercicio52() {
+        let num = document.getElementById('num').value.split(',').map(Number);
     
+        let Buscarnum = parseInt(document.getElementById('Buscarnum').value);
+    
+        let indices = [];
+    
+        for (let i = 0; i < num.length; i++) {
+            if (num[i] === Buscarnum) {
+                indices.push(i);
+            }
+        }
+    
+        if (indices.length > 0) {
+            document.getElementById('resultado').textContent = `El valor ${Buscarnum} se encuentra en los índices: ${indices.join(', ')}`;
+        } else {
+            document.getElementById('resultado').textContent = `El valor ${Buscarnum} no se encuentra en el arreglo.`;
+        }
+    }    
 }
 let ope = new Ejercicio()
+
+// EJERCICIOS DE FUNCIONES 
+
+// Ejercicio 53
+// 53. Función sin parámetros para saludar.
+/*  
+	Funcion Saludar()
+	Escribir "¡Hola Bienbevenido a mi sitio web!"
+	FinFuncion
+    
+    saludar() */
+
+function Ejercicio53() {
+    document.getElementById('saludo').textContent = '¡Hola Bienbevenido a mi sitio web!';
+}
+
+// Ejercicio 54
+// 54. Función con parámetros para sumar dos números.
+
+/*
+	Funcion resultado <- sumandos ( num1,num2 )
+		Definir resultado Como Entero
+		resultado= num2+num1
+    FinFuncion
+
+    // EJ 54
+	Definir suma, num1, num2 Como entero 
+    Escribir "EJERCICO 54"
+    suma= sumandos ( num1,num2 )
+	Escribir "La suma es ", sumandos(6,24)
+*/
+
+function sumandos(num1, num2) {
+    return num1 + num2;
+}
+function Ejercicio54() {
+    let num1 = 6;
+    let num2 = 24;
+    let suma = sumandos(num1, num2);
+    document.getElementById('resultado').textContent = `La suma de ${num1} + ${num2} es: ${suma}`;
+}
+
+// Ejercicio 55
+// 55. Función con return para multiplicar dos números.
+/*
+    Funcion resultado = Multiplicar(a, b)
+    Definir resultado Como Entero
+	resultado = a * b
+    FinFuncion
+
+    Definir a, b, mult Como Entero
+    Escribir "Ejercicio 55"
+	mult = Multiplicar(a, b)
+	Escribir "El resultado de multiplicar 7 y 6 es: ", Multiplicar(7, 6)
+*/
+
+function multiplicar(num1, num2) {
+    return num1 * num2;
+}
+
+function Ejercicio55() {
+    let num1 = 5;
+    let num2 = 10;
+    let resultado = multiplicar(num1, num2);
+    document.getElementById('resultado').textContent = `El resultado de ${num1} * ${num2} es: ${resultado}`;
+}
+
+// Ejercicio 56
+/*
+    // 56. Función sin return para determinar si un número es par o impar.
+	Funcion retorno <- Comparar ( num4 )
+		Definir retorno Como Logico
+		retorno = num4 mod 2<>0
+    finfuncion	
+
+    Definir num4  Como Entero
+	Definir resultado Como Logico
+	Escribir "EJERCICIO 56"
+	resultado = Comparar(num4)
+	Escribir "El numero es impar ", Comparar(8)
+*/
+
+function esParImpar(num) {
+    if (num % 2 === 0) {
+        console.log(`${num} es un número par.`);
+    } else {
+        console.log(`${num} es un número impar.`);
+    }
+}
+
+function Ejercicio56() {
+    let numero = 23; 
+    document.getElementById('resultado').textContent = esParImpar(numero);
+}
+
+// Ejerccio 57
+// 57. Función con parámetros y return para calcular el área de un rectángulo.
+
+/*
+	Funcion resultado = Area(base, altura)
+    Definir resultado como entero
+	resultado =  base * altura
+    FinFuncion
+
+    Definir base, altura, rec como entero
+	Escribir "EJERCICIO 57"
+	rec = Area(base, altura)
+	Escribir "El área del rectángulo es: ", Area(7, 3)
+*/
+
+function calcularArea(base, altura) {
+    return base * altura;
+}
+
+function Ejercicio57() {
+    let base = 15;
+    let altura = 5;
+    let resultado = calcularArea(base, altura);
+    document.getElementById('resultado').textContent = `El resultado de ${base} * ${altura} es: ${resultado}`;
+}
+
+// Ejercicio 58
+// 58. Función sin parámetros para imprimir tu nombre.
+
+/*
+    Funcion ImprimirNombre()
+    Escribir "Alejandra"
+    FinFuncion
+
+    ImprimirNombre()
+*/
+
+function Ejercicio58() {
+    document.getElementById('nombre').textContent = 'Hola, soy Alejandra';
+}
+
+// Ejercicio 59
+// 59. Función con return para convertir grados Celsius a Fahrenheit.
+/*
+    Funcion resul = CelsiusAFahrenheit(celsius)
+	Definir resul como entero
+	resul = (celsius * 9/5) + 32
+    FinFuncion
+
+    Definir celsius, calcular, num Como Entero
+	Escribir "EJERCICIO 59"
+	calcular = CelsiusAFahrenheit(celsius)
+	Escribir "30 grados Celsius son ", CelsiusAFahrenheit(30), " grados Fahrenheit."
+*/
+
+function celsiusAFahrenheit(celsius) {
+    return (celsius * 9/5) + 32;
+}
+
+function Ejercicio59() {
+    let celsius = 15;
+    let resultado = celsiusAFahrenheit(celsius);
+    document.getElementById('resultado').textContent = `El resultado de ${celsius} grados Celsius a Fahrenheit es: ${resultado}`;
+}
+
+// Ejercicio 60
+// 60. Función con parámetros para contar un carácter en una frase.
+/*
+    Funcion contador = ContarCaracter(frase, cara)
+	Definir contador, i, x Como entero
+	x = 1
+	contador <- 0
+	Para i <- 1 Hasta longitud(frase) Con Paso 1 Hacer
+		Si subcadena(frase, i, x) = cara Entonces
+			contador <- contador + 1
+		FinSi
+		x = x + 1
+	FinPara
+    FinFuncion
+
+    Definir frase como cadena
+	Definir contador, cara Como Entero
+	Escribir "Ejercicio 60"
+	contador = ContarCaracter(frase, cara)
+	Escribir "El carácter a aparece ", ContarCaracter("Hola manchas", "a"), " veces en la frase."
+*/
+
+function Ejercicio60(frase="Hola mundo", caracter="o") {
+    let count = 0;
+    for (let i = 0; i < frase.length; i++) {
+        if (frase[i] === caracter) {
+            count++;
+        }
+    }
+    document.getElementById('resultado').textContent = `La frase ${frase} tiene ${count} ${caracter}`;
+}
+
+// Ejercicio 61
+// 61. Función sin return para imprimir números del 1 al 10.
+/*
+   Funcion ImprimirNumeros()
+   Definir i Como entero
+   Para i <- 1 Hasta 10 Con Paso 1 Hacer
+	Escribir i
+   FinPara
+   FinFuncion
+
+   ImprimirNumeros()
+*/
+
+function Ejercicio61() {
+    let resultado = '';
+    for (let i = 1; i <= 10; i++) {
+        resultado += i + ' ';
+    }
+    document.getElementById('resultado').textContent = resultado;
+}
+
+/* imprimir de forma vertical
+function Ejercicio61() {
+    let resultado = '';
+    for (let i = 1; i <= 10; i++) {
+        resultado += i + '<br>'; // Agrega un salto de línea después de cada número
+    }
+    document.getElementById('resultado').innerHTML = resultado;
+}
+*/
+
+// Ejercicio 62
+//62. Función con parámetros y return para sumar una lista de números.
+/*
+   Funcion suma = SumarLista(numx)
+	   Definir suma, i, lista Como Entero
+	   Dimension lista[5]
+	   suma <- 0
+	   
+	   Para i <- 1 Hasta 4 Hacer
+		   suma <- suma + numx[i]
+	   FinPara
+    FinFuncion
+
+    Definir numx, resul Como Entero
+	  Dimension numx[5]
+	  Escribir "EJERCICIO 62"
+	  numx[1] <- 4
+	  numx[2] <- 12
+	  numx[3] <- 24
+	  numx[4] <- 32
+	Escribir "La suma de los números en la lista es: ", SumarLista(numx)
+*/
+
+function sumarListaNumeros(lista) {
+    let suma = 0;
+    for (let numero of lista) {
+        suma += numero;
+    }
+    return suma;
+}
+
+function Ejercicio62(){
+    let numeros = [1, 2, 3, 4, 5];
+    let resultado = sumarListaNumeros(numeros);
+    document.getElementById('resultado').innerHTML = resultado;
+
+}
+
+
+
+
+
