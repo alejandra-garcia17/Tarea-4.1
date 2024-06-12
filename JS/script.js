@@ -1702,18 +1702,478 @@ class Ejercicio {
         } else {
         document.getElementById("resultado").textContent = "El número secreto es menor. Sigue intentando.";
         }
-    document.getElementById("num").value = '';
+        document.getElementById("num").value = '';
 
-    if (acertado) {
+        if (acertado) {
         document.querySelector("button").disabled = true;
+        }
+   }
+
+   // Ejercicio 41
+   // 41. Contador de Alfabeto: Utiliza un bucle for para contar el numero de letras 
+   // del alfabeto(a..z) en una palabra ingresada por el usuario.
+   // Entrada: palabra="", long=, contador=0, letra="", i=0, x=1
+   // Proceso: Para i <- 1 Hasta long Hacer
+   //            letra <- Minusculas(SubCadena(palabra, i, x))
+   //            Si letra >= "a" Y letra <= "z" Entonces
+   //             contador <- contador + 1
+   //            FinSi
+   // 		     x = x + 1
+   //          FinPara
+   // Salida: contador
+
+   /*Algoritmo AlfabetoEJ41
+	
+    Definir palabra Como Cadena
+    Definir long, contador, i, x Como Entero
+    Definir letra Como Caracter
+	
+    contador <- 1
+	x = 1
+	
+    Escribir "Ingresa una palabra: "
+    Leer palabra
+	
+    long <- Longitud(palabra)
+	
+    Para i <- 1 Hasta long Hacer
+        letra <- Minusculas(SubCadena(palabra, i, x))
+		
+        Si letra >= "a" Y letra <= "z" Entonces
+            contador <- contador + 1
+        FinSi
+		x = x + 1
+    FinPara
+	
+    Escribir "El numero de letras del alfabeto en la palabra es: ", contador
+
+    FinAlgoritmo*/
+
+    Ejercicio41() {
+        let palabraIngresada = document.getElementById("palabra").value.toLowerCase();
+        let contadorLetras = 0;
+
+            for (let i = 0; i < palabraIngresada.length; i++) {
+                let caracter = palabraIngresada.charAt(i);
+                    
+                if (/^[a-z]$/.test(caracter)) {
+                    contadorLetras++;
+                }
+            }
+
+            document.getElementById("resultado").innerHTML = `La palabra "${palabraIngresada}" tiene ${contadorLetras} letras del alfabeto.`;
     }
+
+    // Ejercicio 42
+    // 42. Suma de numeros impares: Utiliza un bucle while para calcular la suma de 
+    // los numeros impares del 1 al 100.
+    // Entrada: num=0(ingresar), suma=0(calcular)
+    // Proceso: Mientras num <= 100 Hacer
+    //            Si num % 2 <> 0 Entonces
+    //               suma <- suma + num
+    //            FinSi    
+    //             num <- num + 1
+    //          FinMientras
+    // Salida: suma
+    /*Algoritmo Suma_imparesEJ42
+	
+    Definir num, suma Como Entero
+	
+    num <- 1  // Comenzamos desde el numero 1
+    suma <- 0   // Inicializamos la suma en 0
+	
+    Mientras num <= 100 Hacer
+        Si num % 2 <> 0 Entonces
+            // Si el numero es impar, lo sumamos a la variable 'suma'
+            suma <- suma + num
+        FinSi
+		
+        // Incrementamos el numero actual
+        num <- num + 1
+    FinMientras
+	
+    Escribir "La suma de los numeros impares del 1 al 100 es: ", suma
+
+    FinAlgoritmo*/
+
+    Ejercicio42() {
+        let suma = 0;
+        let numero = 1;
+
+        // Utilizar un bucle while para sumar los números impares del 1 al 100
+        while (numero <= 100) {
+            suma += numero;
+            numero += 2; // Incrementar en 2 para pasar al siguiente número impar
+        }
+
+        // Mostrar el resultado
+        document.getElementById("resultado").innerHTML = `La suma de los números impares del 1 al 100 es: ${suma}`;
+    }
+
+    // Ejercicio 43
+    // 43. Contador de caracteres: Escribir un programa que lea una palabra y presenta 
+    // cuantos caracteres hay en dicha palabra.
+    // Bosquejo
+    // Entrada: palabra=""(ingresar), long=0
+    // Proceso: long <- Longitud(palabra)
+    // Salida: palabra
+
+    /*Algoritmo Contar_caracteresEJ43
+	
+    Definir palabra Como Cadena
+    Definir long Como Entero
+	
+    Escribir "Ingresa una palabra: "
+    Leer palabra
+	
+    long <- Longitud(palabra)
+	
+    Escribir "La palabra ", palabra, " tiene ", long, " caracteres."
+
+    FinAlgoritmo*/
+
+    Ejercicio43() {
+        let palabraIngresada = document.getElementById("palabra").value;
+            let cantidadCaracteres = palabraIngresada.length;
+
+            document.getElementById("resultado").innerHTML = `La palabra "${palabraIngresada}" tiene ${cantidadCaracteres} caracteres.`;
+    }
+
+    // Ejercicio 44
+    // 44. Suma de numeros: Pide al usuario que ingrese numeros enteros positivos 
+    // uno por uno y utiliza un bucle while para calcular la suma de estos numeros. 
+    // El ciclo debe terminar cuando el usuario ingrese un numero negativo.
+    // Bosquejo
+    // Entrada: num=0, suma=0, continuar=true
+    // Proceso: Mientras continuar Hacer
+    //           Escribir "Ingresa un numero: "
+    //           Leer num
+    //           Si num < 0 Entonces
+    //             Escribir "N�mero negativo ingresado. Terminando."
+    //             continuar <- Falso  // Cambiamos continuar a Falso para salir del bucle
+    //           Sino
+    //             suma <- suma + num
+    //           FinSi
+    //          FinMientras
+    // Salida: suma
+
+    /*Algoritmo Suma_numerosEJ44
+    Definir num, suma Como Entero
+    Definir continuar Como Logico
+	
+    suma = 0
+    continuar = Verdadero  // Inicializamos la variable continuar en Verdadero
+	
+    Escribir "Ingresa numeros enteros positivos (ingresa un numero negativo para terminar):"
+	
+    Mientras continuar Hacer
+        Escribir "Ingresa un numero: "
+        Leer num
+		
+        Si num < 0 Entonces
+            Escribir "Numero negativo ingresado. Terminando."
+            continuar = Falso  
+        Sino
+            suma = suma + num
+        FinSi
+    FinMientras
+	
+    Escribir "La suma de los numeros ingresados es: ", suma
+
+    FinAlgoritmo*/
+
+    Ejercicio44() {
+        let inputNumero = document.getElementById("numero");
+        let numero = parseInt(inputNumero.value);
+        let suma = 0;
+        while (numero >= 0) {
+            suma += numero;
+            inputNumero.value = "";
+            numero = parseInt(prompt("Ingrese otro número (negativo para finalizar):"));
+        }
+        document.getElementById("resultado").innerHTML = `Suma total: ${suma}`;
+    }
+
+    // Ejercicio 45
+    // 45. 50. Cuenta regresiva: Pide al usuario que ingrese un número entero positivo 
+    // y utiliza un bucle while para mostrar una cuenta regresiva desde ese número 
+    // hasta 1.
+    // Bosquejo
+    // Entrada: startNumber=0
+    // Proceso: Si startNumber <= 0 Entonces
+    //             Escribir "Por favor, ingresa un número entero positivo."
+    //          Sino
+    //             Mientras startNumber > 0 Hacer
+    //                Escribir startNumber
+    //                startNumber <- startNumber - 1
+    //             FinMientras
+    //          FinSi
+    // Salida: startNumber
+
+    /*Algoritmo Cuenta_Regresiva
+    Definir startNumber Como Entero
+
+    Escribir "Ingresa un número entero positivo:"
+    Leer startNumber
+
+    Si startNumber <= 0 Entonces
+        Escribir "Por favor, ingresa un número entero positivo."
+    Sino
+        Mientras startNumber > 0 Hacer
+            Escribir startNumber
+            startNumber <- startNumber - 1
+        FinMientras
+    FinSi
+    FinAlgoritmo*/
+
+    Ejercicio45() {
+        let startNumber = parseInt(document.getElementById('startNumber').value);
+        let result = '';
+    
+        if (startNumber > 0) {
+            while (startNumber > 0) {
+                result += startNumber + '<br>';
+                startNumber--;
+            }
+        } else {
+            result = 'Por favor, ingresa un número entero positivo.';
+        }
+    
+        document.getElementById('resultado').innerHTML = result;
+    }
+
+    // Ejercicio 46
+    /// 46. Suma de elementos: Crea un arreglo de numeros enteros y calcula la suma de 
+    // todos sus elementos.
+
+    /*Algoritmo Suma_arreglosEJ46
+    Dimension vector[10] 
+    Definir suma, vector, i Como Entero
+	
+    Para i <- 0 Hasta 9 Hacer  
+        vector[i] <- azar(10)  // Asignamos valores aleatorios entre 0 y 5
+    FinPara
+	
+    suma <- 0
+	
+    Para i <- 0 Hasta 9 Hacer  
+        suma <- suma + vector[i]
+    FinPara
+	
+    Escribir "El vector contiene los siguientes valores:"
+    Para i <- 0 Hasta 9 Hacer  
+        Escribir vector[i]
+    FinPara
+	
+    Escribir "La suma de los elementos en el vector es: ", suma
+FinAlgoritmo*/
+
+    Ejercicio46() {
+    let numbers = document.getElementById('numbers').value.split(',').map(Number);
+
+    let sum = 0;
+
+    for (let i = 0; i < numbers.length; i++) {
+        sum += numbers[i];
+    }
+
+    document.getElementById('resultado').textContent = `La suma de los elementos es: ${sum}`;
+    }
+
+    //Ejercicio 47
+    // 47. Promedio de calificaciones: Crea un arreglo de calificaciones (n�meros 
+    // decimales) y calcula el promedio de las calificaciones.
+    /*Algoritmo Promedio_calificacionesEJ47
+    Dimension calificaciones[10]   
+    Definir suma, promedio, calificaciones Como Real
+    Definir n, i Como Entero
+	
+    n <- 0  
+
+    Escribir "Ingresa las calificaciones (termina con -1):"
+    Leer calificaciones[n]
+
+    Mientras calificaciones[n] <> -1 Hacer
+        n <- n + 1
+        Leer calificaciones[n]
+    FinMientras
+
+    suma <- 0
+
+    Para i <- 0 Hasta n - 1 Hacer
+        suma <- suma + calificaciones[i]
+    FinPara
+
+    Si n > 0 Entonces
+        promedio <- suma / n
+        Escribir "El promedio de las calificaciones es: ", promedio
+    FinSi
+	
+FinAlgoritmo*/
+
+    Ejercicio47(){ 
+        let resp,pro,acu=0,pos,lon,notas = document.getElementById("notas").value
+        notas = notas.split(";")
+        lon = notas.length
+        for(pos=0;pos < lon;pos++){
+            acu=acu + parseFloat(notas[pos])
+        }
+        pro = acu / lon
+        pro =  Math.round(pro * 100) / 100;
+        resp = document.getElementById("resultado")
+        resp.innerHTML = `Promedio de Notas:[${notas}] = ${pro}` 
+    }
+
+    // Ejercicio 48
+    // 48. Mayor y menor valor: Encuentra el valor maximo y minimo en un arreglo de 
+    // numeros enteros.
+
+    /*Algoritmo Mayor_Menor_ValorEJ48
+    Dimension num[10]  
+    Definir maximo, minimo, num, i Como Entero
+
+    num[1] <- 2
+    num[2] <- 64
+    num[3] <- 6
+    num[4] <- 78
+    num[5] <- 10
+    num[6] <- 14
+    num[7] <- 20
+    num[8] <- 120
+    num[9] <- 44
+   
+    maximo <- num[1]  
+    minimo <- num[1]  
+	
+    Para i <- 2 Hasta 9 Hacer
+        Si num[i] > maximo Entonces
+            maximo <- num[i]
+        FinSi
+		
+        Si num[i] < minimo Entonces
+            minimo <- num[i]
+        FinSi
+    FinPara
+	
+    Escribir "El arreglo contiene los siguientes valores:"
+    Para i <- 1 Hasta 9 Hacer
+        Escribir num[i]
+    FinPara
+	
+    Escribir "El valor m�ximo en el arreglo es: ", maximo
+    Escribir "El valor m�nimo en el arreglo es: ", minimo
+
+    FinAlgoritmo*/
+
+    Ejercicio48() {
+        let values = document.getElementById('values').value.split(',').map(Number);
+    
+        let minValue = Math.min(...values);
+        let maxValue = Math.max(...values);
+    
+        document.getElementById('resultado').textContent = `El valor mínimo es: ${minValue}, y el valor máximo es: ${maxValue}`;
+    }
+
+    // Ejercicio 49
+    // 49. Buscar un elemento: Pide al usuario que ingrese un numero y verifica si 
+    // ese numero esta presente en un arreglo dado.
+
+    /*Algoritmo Buscar_elementoEJ49
+    Dimension num[10]   
+    Definir buscar, encontrado, num, i Como Entero
+
+    num[1] <- 2
+    num[2] <- 10
+    num[3] <- 34
+    num[4] <- 56
+    num[5] <- 62
+    num[6] <- 78
+    num[7] <- 86
+    num[8] <- 24
+    num[9] <- 46
+   
+    encontrado <- 0  
+	
+    Escribir "Ingresa un n�mero para buscar en el arreglo:"
+    Leer buscar
+	
+    Para i <- 1 Hasta 9 Hacer
+        Si num[i] = buscar Entonces
+            encontrado = 1  // El elemento fue encontrado
+        FinSi
+    FinPara
+	
+    Si encontrado = 1 Entonces
+        Escribir "El elemento ", buscar, " esta presente en el arreglo."
+    Sino
+        Escribir "El elemento ", buscar, " no se encontra en el arreglo."
+    FinSi
+
+    FinAlgoritmo*/
+    
+    Ejercicio49() {
+        let numbersArray = [3, 5, 7, 9, 11, 13, 15, 17, 19, 21];
+        let buscarNumber = parseInt(document.getElementById('searchNumber').value);
+        let found = numbersArray.includes(buscarNumber);
+    
+            if (found) {
+               document.getElementById('resultado').textContent = `El número ${buscarNumber} está presente en el arreglo.`;
+            } else {
+               document.getElementById('resultado').textContent = `El número ${buscarNumber} no está presente en el arreglo.`;
+            }
+    }
+
+    // Ejercicio 50
+    // 50. Contar elementos pares: Cuenta cuantos numeros pares hay en un arreglo de 
+    // numeros enteros.
+
+    /*Algoritmo Elementos_paresEJ50
+    Dimension num[10] 
+    Definir pares, num, i Como Entero
+
+    num[1] <- 5
+    num[2] <- 10
+    num[3] <- 13
+    num[4] <- 34
+    num[5] <- 27
+    num[6] <- 35
+    num[7] <- 44
+    num[8] <- 12
+    num[9] <- 3
+   
+    pares <- 0  
+	
+    Para i <- 1 Hasta 9 Hacer
+        Si num[i] % 2 = 0 Entonces
+            pares <- pares + 1  // Aumentamos el contador si el n�mero es par
+        FinSi
+    FinPara
+	
+    Escribir "El arreglo contiene los siguientes valores:"
+    Para i <- 1 Hasta 9 Hacer
+        Escribir num[i]
+    FinPara
+	
+    Escribir "El n�mero de elementos pares en el arreglo es: ", pares
+
+    FinAlgoritmo*/
+
+    Ejercicio50() {
+        let numbers = document.getElementById('numbers').value.split(',').map(Number);
+        let evenCount = 0;
+        
+        for (let i = 0; i < numbers.length; i++) {
+            if (numbers[i] % 2 === 0) {
+                evenCount++;
+            }
+        }
+        
+        document.getElementById('resultado').textContent = `La cantidad de números pares en el arreglo es: ${evenCount}`;
+    }
+    
+
+    
+    
+    
 }
-
-
-
-
-
-}
-
-
 let ope = new Ejercicio()
